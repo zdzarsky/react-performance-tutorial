@@ -1,0 +1,53 @@
+/* Css for CreditCard component from ./Cards.tsx */
+/* Path: src\features\cards\Cards.tsx */
+/* Css for CreditCard component from ./Cards.module.css */
+
+.card {
+    background-color: #aafafa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+    position: relative;
+    width: 100%;
+}
+.card__header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.card__header__type {
+    color: #000;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+}
+.card__hearder__title {
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+}
+.card__header__number {
+    color: #000;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.card__footer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.card__footer__expiration {
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+}
