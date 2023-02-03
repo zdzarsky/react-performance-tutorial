@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit'
-import { memoizedCardsSelector } from './CardsSlice'
+import { basicCardsSelector } from './CardsSlice'
 
-export const cardsSelector = createSelector(memoizedCardsSelector, (cards) => {
+export const cardsSelector = createSelector(basicCardsSelector, (cards) => {
 	return cards.allIds.map((id) => cards.byId[id])
 })

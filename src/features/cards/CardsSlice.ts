@@ -25,7 +25,12 @@ const initialState: CardsState = {
 export const cardsSlice = createSlice({
   name: 'cards',
   initialState,
-  reducers: {},
+  reducers: {
+    addCard: (state, action: PayloadAction<Card>) => {
+      state.byId[action.payload.uid] = action.payload
+      state.allIds = [action.payload.uid].concat(state.allIds)
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchAllCards.fulfilled, (state, action) => {
       action.payload.forEach((card: Card) => {
@@ -45,5 +50,5 @@ export const fetchAllCards = createAsyncThunk('cards/fetchAll', async () => {
   return fetch100Cards()
 })
 
-export const memoizedCardsSelector = (state: CardsRootState) => state.cards
+export const basicCardsSelector = (state: CardsRootState) => state.cards
 export const { actions, reducer } = cardsSlice

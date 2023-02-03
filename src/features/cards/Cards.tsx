@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
-import { Card } from './Card'
+import {Card, createCard} from './Card'
 import { cardsSelector } from './CardsSelector'
-import { fetchAllCards } from './CardsSlice'
+import {cardsSlice, fetchAllCards} from './CardsSlice'
 
 import styles from './Cards.module.css'
 
 export function Cards() {
   const dispatch = useDispatch()
+  // (state: CardsRootState) => state.cards
   const cards = useSelector(cardsSelector, shallowEqual)
 
-  const x = { foo: 'abc'}
-  const y = { foo: 'abc'}
+  const x = { foo: 'abc', b: ['a']}
+  const y = { foo: 'abc', b: ['a']}
 
   useEffect(() => {
     // @ts-ignore
@@ -22,9 +23,10 @@ export function Cards() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16}}>
+      <button onClick={() => dispatch(cardsSlice.actions.addCard(createCard()))}>Add</button>
       {cards.map((card: Card) => (
         <div key={card.uid}>
-          <CreditCard key={card.credit_card_number} card={card} />
+          <CreditCardMemo key={card.credit_card_number} card={card} />
         </div>
       ))}
     </div>
@@ -37,6 +39,7 @@ interface CardProps {
 
 // lookalike credit card component
 function CreditCard({ card }: CardProps) {
+  console.error('Credit Card co ty robisz!?')
   const { credit_card_number, credit_card_type, credit_card_expiry_date } = card
   return (
     <div className={styles.card}>
@@ -50,5 +53,7 @@ function CreditCard({ card }: CardProps) {
     </div>
   )
 }
+
+const CreditCardMemo = React.memo(CreditCard)
 
 
